@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compulsivos Virtual Store - Tu Mundo en un Clic</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; min-height: 100vh; }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .header { text-align: center; background: white; padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+    .logo { font-size: 2.5em; font-weight: bold; background: linear-gradient(45deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; margin-bottom: 10px; }
+    .subtitle { color: #666; font-size: 1.2em; }
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-bottom: 100px; }
+    .product { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .product:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+    .product img { width: 100%; height: 250px; object-fit: cover; }
+    .product-info { padding: 15px; }
+    .product-name { font-weight: bold; margin-bottom: 10px; color: #333; font-size: 0.9em; }
+    .add-btn { width: 100%; padding: 12px; background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1em; transition: opacity 0.3s; }
+    .add-btn:hover { opacity: 0.8; }
+    .cart { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 20px; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 2em; box-shadow: 0 10px 30px rgba(0,0,0,0.3); cursor: pointer; transition: transform 0.3s; }
+    .cart:hover { transform: scale(1.1); }
+    .cart-count { position: absolute; top: -5px; right: -5px; background: red; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.6em; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="logo">Compulsivos Virtual Store</h1>
+      <p class="subtitle">Tu Mundo en un Clic</p>
+    </div>
+    <div id="products" class="products"></div>
+  </div>
+  <div class="cart" onclick="sendToWhatsApp()">🛒
+    <div class="cart-count" id="cart-count">0</div>
+  </div>
+  <script>
+const whatsapp='584245317606';const baseUrl='https://mail.google.com/mail/u/0?ui=2&ik=22f9cee92c&permmsgid=msg-f:1860502847702742011&th=19d1d57b8cecb3fb&view=att&disp=safe&zw';const productos=[{n:'Reloj Smartwatch',a:'0.1',r:'19d1d570b2baef75a703c'},{n:'Lámpara LED',a:'0.2',r:'19d1d570b2bd60c8a365c'},{n:'Control Xbox',a:'0.3',r:'19d1d570b2bd96823f340'},{n:'Cámara Deportiva',a:'0.4',r:'19d1d570b2b97b1e6999'},{n:'Bombillo LED',a:'0.5',r:'19d1d570b2bafd4574c1d'},{n:'Lámpara RGB',a:'0.6',r:'19d1d570b2baecd13ed3b'},{n:'Reloj Casio',a:'0.7',r:'19d1d570b2ba9925b0e48'},{n:'Control Inalámbrico',a:'0.8',r:'19d1d570b2b7fe4aee216'},{n:'Audífonos Bluetooth',a:'0.9',r:'19d1d570b2ba7cf6aee55'},{n:'Mini Proyector',a:'0.10',r:'19d1d570b2bd17036327'},{n:'Soporte Celular',a:'0.11',r:'19d1d570b2b3bd8e49126'},{n:'Teclado Gaming',a:'0.12',r:'19d1d570b2b3be6fc1227'},{n:'Mouse Gamer',a:'0.13',r:'19d1d570b2b3a6a817722'},{n:'Auriculares',a:'0.14',r:'19d1d570b2ba7eb99f046'},{n:'Parlante Bluetooth',a:'0.15',r:'19d1d570b2bb0ac330f4e'},{n:'Cargador',a:'0.16',r:'19d1d570b2ba9bca19149'},{n:'Cable USB',a:'0.17',r:'19d1d570b2b3a7898f821'},{n:'Adaptador',a:'0.18',r:'19d1d570b2bacedf4cb58'},{n:'Funda Celular',a:'0.19',r:'19d1d570b2bab391c2c4b'},{n:'Protector',a:'0.20',r:'19d1d570b2bafe26ecd1f'}];let carrito=[];productos.forEach((p,i)=>{const div=document.createElement('div');div.className='product';div.innerHTML=`<img src="${baseUrl}&attid=${p.a}&realattid=${p.r}" alt="${p.n}"><div class="product-info"><div class="product-name">${p.n}</div><button class="add-btn" onclick="agregar(${i})">Agregar al Carrito</button></div>`;document.getElementById('products').appendChild(div);});function agregar(i){carrito.push(productos[i]);document.getElementById('cart-count').textContent=carrito.length;}function sendToWhatsApp(){if(!carrito.length)return alert('¡Carrito vacío!');let msg='🛒 *Compulsivos Virtual Store*%0A%0A*Pedido:*%0A';carrito.forEach((p,i)=>msg+=`${i+1}. ${p.n}%0A`);msg+='%0A¡Gracias!';window.open(`https://wa.me/${whatsapp}?text=${msg}`,'_blank');}
+  </script>
+</body>
+</html>
