@@ -1,3 +1,4 @@
+i:'    i:'41
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,36 +39,36 @@
     <script>
         const whatsapp='584245317606';
         const products=[
-{n:'Smartwatch D20',i:'images/1000011032.jpg'},
-{n:'Afeitadora Philips',i:'images/1000011034.jpg'},
-{n:'Creatina Muscletech',i:'images/1000011036.jpg'},
-{n:'Soporte Celular',i:'images/1000011039.jpg'},
-{n:'Bombillo LED',i:'images/1000011040.jpg'},
-{n:'Smartwatch FDG8',i:'images/1000011041.jpg'},
-{n:'Llavero LED',i:'images/1000011042.jpg'},
-{n:'Control Bluetooth',i:'images/1000011048.jpg'},
-{n:'Router TP-Link',i:'images/1000011051.jpg'},
-{n:'Mousepad RGB',i:'images/1000011054.jpg'},
-{n:'Auxiliares LED',i:'images/1000011057.jpg'},
-{n:'Bombillos LED LUPA',i:'images/1000011060.jpg'},
-{n:'Proyector 220W',i:'images/1000011064.jpg'},
-{n:'Bombillos LED CSP',i:'images/1000011065.jpg'},
-{n:'Adaptador Bluetooth',i:'images/1000011066.jpg'},
-{n:'Teclado Gaming',i:'images/1000011068.jpg'},
-{n:'Mouse Gamer',i:'images/1000011070.jpg'},
-{n:'Auriculares',i:'images/1000011072.jpg'},
-{n:'Smartwatch T800',i:'images/1000011073.jpg'},
-{n:'Cinta LED RGB',i:'images/1000011076.jpg'},
-{n:'Router WiFi',i:'images/1000011080.jpg'},
-{n:'Parlante Bluetooth',i:'images/1000011083.jpg'},
-{n:'Mini Dremel',i:'images/1000011089.jpg'},
-{n:'Base Celular',i:'images/1000011095.jpg'},
-{n:'Adaptador Bluetooth 2 en 1',i:'images/1000011096.jpg'},
-{n:'Proteína Muscletech',i:'images/1000011098.jpg'},
-{n:'Consola Stick X2',i:'images/1000011099.jpg'},
-{n:'Consola X6',i:'images/1000011102.jpg'},
-{n:'Afeitadora Philips All in One',i:'images/1000011103.jpg'},
-{n:'Proyector HD',i:'images/1000011105.jpg'}
+{n:'Smartwatch D20',i:'1000011032.jpg'},
+{n:'Afeitadora Philips',i:'1000011034.jpg'},
+{n:'Creatina Muscletech',i:'1000011036.jpg'},
+{n:'Soporte Celular',i:'1000011039.jpg'},
+{n:'Bombillo LED',i:'1000011040.jpg'},
+{n:'Smartwatch FDG8',i:'1000011041.jpg'},
+{n:'Llavero LED',i:'1000011042.jpg'},
+{n:'Control Bluetooth',i:'1000011048.jpg'},
+{n:'Router TP-Link',i:'1000011051.jpg'},
+{n:'Mousepad RGB',i:'1000011054.jpg'},
+{n:'Auxiliares LED',i:'1000011057.jpg'},
+{n:'Bombillos LED LUPA',i:'1000011060.jpg'},
+{n:'Proyector 220W',i:'1000011064.jpg'},
+{n:'Bombillos LED CSP',i:'1000011065.jpg'},
+{n:'Adaptador Bluetooth',i:'1000011066.jpg'},
+{n:'Teclado Gaming',i:'1000011068.jpg'},
+{n:'Mouse Gamer',i:'1000011070.jpg'},
+{n:'Auriculares',i:'1000011072.jpg'},
+{n:'Smartwatch T800',i:'1000011073.jpg'},
+{n:'Cinta LED RGB',i:'1000011076.jpg'},
+{n:'Router WiFi',i:'1000011080.jpg'},
+{n:'Parlante Bluetooth',i:'1000011083.jpg'},
+{n:'Mini Dremel',i:'1000011089.jpg'},
+{n:'Base Celular',i:'1000011095.jpg'},
+{n:'Adaptador Bluetooth 2 en 1',i:'1000011096.jpg'},
+{n:'Proteína Muscletech',i:'1000011098.jpg'},
+{n:'Consola Stick X2',i:'1000011099.jpg'},
+{n:'Consola X6',i:'1000011102.jpg'},
+{n:'Afeitadora Philips All in One',i:'1000011103.jpg'},
+{n:'Proyector HD',i:'1000011105.jpg'}
 ];
 let cart=[];function renderProducts(){const container=document.getElementById('products');products.forEach((p,i)=>{const div=document.createElement('div');div.className='product';div.innerHTML=`<img src="${p.i}" alt="${p.n}"><div class="product-info"><div class="product-name">${p.n}</div><button class="add-btn" onclick="addToCart(${i})">Agregar al Carrito</button></div>`;container.appendChild(div);});}function addToCart(i){cart.push(products[i].n);updateCart();}function updateCart(){document.getElementById('cart-count').textContent=cart.length;}function sendToWhatsApp(){if(cart.length===0){alert('El carrito está vacío');return;}let msg='🛍 *Compulsivos Virtual Store*\n\n*Pedido:*\n';cart.forEach((item,i)=>msg+=`${i+1}. ${item}\n`);msg+='\n¡Gracias!';window.open(`https://api.whatsapp.com/send?phone=${whatsapp}&text=${encodeURIComponent(msg)}`);}renderProducts();
     </script>
